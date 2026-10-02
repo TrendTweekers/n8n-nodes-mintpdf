@@ -118,9 +118,6 @@ What the reviewers check, and where this package stands:
 - English only: yes.
 - One service per package, not a duplicate of a built-in node: yes.
 
-## Known limitation to mention if a reviewer asks
+## Credential test
 
-The credential test only checks that a MintPDF server answers `GET /health` at the Base URL.
-MintPDF has no free authenticated endpoint: every `POST /v1/pdf` spends a render, and an
-unknown key is served as anonymous instead of being rejected with 401. A real key check needs
-a new endpoint in the MintPDF API (for example `GET /v1/me` that returns 401 for an unknown key).
+The credential test calls `GET /v1/me`, which is free and returns 401 for a missing or unknown key.

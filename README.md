@@ -60,7 +60,7 @@ You need a MintPDF API key.
 
 The key is sent as `Authorization: Bearer <key>`.
 
-About the credential test: MintPDF has no authenticated endpoint that is free to call. Every render spends quota, and an unknown key is served as an anonymous request instead of being rejected. So **Test** only checks that a MintPDF server answers at the Base URL. If renders stop at 3 a day, the key is wrong.
+About the credential test: **Test** calls `GET /v1/me`, which is free and does not spend a render. It fails if the key is wrong.
 
 ## Example
 

@@ -46,25 +46,14 @@ export class MintPdfApi implements ICredentialType {
 	};
 
 	/**
-	 * MintPDF has no authenticated endpoint that is free to call: every POST /v1/pdf spends a
-	 * render, and an unknown key is served as anonymous rather than rejected. So the test only
-	 * confirms that a MintPDF server answers at the base URL. The key is checked on the first render.
+	 * GET /v1/me costs nothing and returns 401 for a missing or unknown key, so a failed test
+	 * means the key is wrong (or no MintPDF server answers at the base URL).
 	 */
 	test: ICredentialTestRequest = {
 		request: {
 			baseURL: '={{String($credentials.baseUrl || "https://mintpdf.dev").replace(/\\/+$/, "")}}',
-			url: '/health',
+			url: '/v1/me',
 			method: 'GET',
 		},
-		rules: [
-			{
-				type: 'responseSuccessBody',
-				properties: {
-					key: 'ok',
-					value: false,
-					message: 'No MintPDF server answered at this base URL',
-				},
-			},
-		],
 	};
 }
