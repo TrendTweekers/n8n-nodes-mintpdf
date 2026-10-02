@@ -57,5 +57,9 @@
   },
   "bugs": {
     "url": "https://github.com/TrendTweekers/n8n-nodes-mintpdf/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }
