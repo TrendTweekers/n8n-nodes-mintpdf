@@ -314,7 +314,7 @@ export class MintPdf implements INodeType {
 						: new NodeApiError(this.getNode(), error as JsonObject, { itemIndex: i });
 				if (this.continueOnFail()) {
 					returnData.push({
-						json: { error: nodeError.message, description: nodeError.description ?? undefined },
+						json: { error: nodeError.message, details: nodeError.description ?? undefined },
 						pairedItem: { item: i },
 					});
 					continue;
